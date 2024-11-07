@@ -1,0 +1,88 @@
+// CLASSES - é como uma forma para criar objetos
+
+class Pessoa {
+    constructor(nome, anoDeNascimento, profissao) {
+        this.nome = nome;
+        this.anoDeNascimento = anoDeNascimento;
+        this.profissao = profissao;
+    };
+    ola() {
+        console.log("Olá!, eu sou " + this.nome);
+    }
+    calculaIdade() {
+        return new Date().getFullYear() - this.anoDeNascimento;
+    };
+};
+
+const pessoa1 = new Pessoa("Lucas",1988,"programador");
+
+// HERANÇA COM CLASSES
+
+class Estudante extends Pessoa {
+    #matricula;
+    constructor(nome, anoDeNascimento, matricula) {
+        super(nome, anoDeNascimento, "Estudante"); // aqui estamos fixando a profissao estudante para o aluno não precisar informar
+        this.#matricula = matricula;
+    };
+    getMatricula() {
+        return this.#matricula
+    };
+    setMatricula(valor) {
+        this.#matricula = valor;
+    }
+    ola() {
+        super.ola(); // está chamando primeiro o ola() do pai
+        console.log("colegas!");
+    }; // depois chama o olá daqui
+};
+
+const aluno1 = new Estudante("Júlio", 1999, 31423488);
+
+class Professor extends Pessoa {
+    constructor(nome, anoDeNascimento, titulacao) {
+        super(nome, anoDeNascimento, "Professor"); // aqui estamos fixando a profissao estudante para o aluno não precisar informar
+        this.titulacao = titulacao;
+    };
+   
+};
+
+const prof1 = new Professor("Marta", 1970, "Mestre");
+
+// polimorfismo
+
+aluno1.ola()
+
+class ValidadorCPF {
+    static validar(cpf) {
+        if (cpf == 11) {
+            return true
+        }
+        return false;
+    }
+}
+
+ValidadorCPF.validar(11);
+
+
+// VISIBILIDADE
+
+function Pessoa() {
+    let nome = ['Fulano', 'de Tal'];
+    let anoDeNascimento = 1990;
+    let profissao = "Estudante";
+    this.calculaIdade = function () {
+        return new Date().getFullYear() - anoDeNascimento;
+    };
+};
+
+const pessoa = new Pessoa();
+console.log(pessoa);
+
+
+function Estagiario(numeroContratoParam) {
+    let numerContrato = numeroContratoParam;
+};
+
+
+
+
